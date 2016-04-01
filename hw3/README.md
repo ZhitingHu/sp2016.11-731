@@ -1,18 +1,12 @@
-There are three Python programs here (`-h` for usage):
-
- - `./decode` a simple non-reordering (monotone) phrase-based decoder
- - `./grade` computes the model score of your output
-
-The commands are designed to work in a pipeline. For instance, this is a valid invocation:
-
-    ./decode | ./grade
 
 
-The `data/` directory contains the input set to be decoded and the models
+ * `./decode` is the improved phrase-based decoder that allows reordering adjacent phrases
+   - When translating phrase at position [i,j), we also consider the next phrase at 
+     position [j,k), and add the reordered translation [j,k).english+trans[i,j).english 
+     to stack[k]
 
- - `data/input` is the input text
-
- - `data/lm` is the ARPA-format 3-gram language model
-
- - `data/tm` is the phrase translation model
-
+ * `output.txt` is obtained by running
+   
+    ./decode -s 10 > output.txt
+ 
+ * the score evaluated locally is -5229.566807

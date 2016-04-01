@@ -71,7 +71,7 @@ for f in input_sents:
                                     #new_hypothesis = hypothesis(logprob, lm_state, h, cur_phrase)
                                     #if lm_state not in stacks[j] or stacks[j][lm_state].logprob < logprob:
                                     #    stacks[j][lm_state] = new_hypothesis 
-                                    two_phrase = phrase(cur_phrase.english+' '+next_phrase.english, cur_phrase.logprob+next_phrase.logprob)
+                                    two_phrase = phrase(next_phrase.english+' '+cur_phrase.english, cur_phrase.logprob+next_phrase.logprob)
                                     new_reorder_hypothesis = hypothesis(reorder_logprob, reorder_lm_state, h, two_phrase)
                                     if reorder_lm_state not in stacks[k] or stacks[k][reorder_lm_state].logprob < reorder_logprob:
                                         stacks[k][reorder_lm_state] = new_reorder_hypothesis 
